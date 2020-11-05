@@ -1,4 +1,10 @@
-const orm = require("./models/config/orm.js");
+const orm = require("../config/orm.js");
+
+
+
+ orm.select("burgers", function(data){
+    console.log(data);
+});
 
 
 
