@@ -1,10 +1,25 @@
 const express = require("express");
-const orm = require("./config/orm.js");
 
 
+var PORT = process.env.PORT || 3005;
 
- orm.insert("burgers", inputName, inputBool, function(data){
-    console.log(data);
+var app = express();
+
+app.use(express.static("public"));
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+var routes = require("./controllers/burgers_controllers.js");
+
+app.use(routes);
+
+app.listen(PORT, function() {
+  console.log("App now listening at localhost:" + PORT);
 });
-
-
