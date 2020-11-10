@@ -1,10 +1,12 @@
 
-  $(".create-form").on("submit", function(event) {
+
+  $(".burger_control").on("submit", function(event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
     var newBurger = {
-      name: $("#bn").val().trim()
+      name: $("#enter_text").val().trim()
+      
     };
 
     // Send the POST request.
@@ -13,7 +15,7 @@
       data: newBurger
     }).then(
       function() {
-        console.log("A new Burger was created");
+        console.log("created new burger");
         // Reload the page to get the updated list
         location.reload();
       }

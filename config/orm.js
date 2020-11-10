@@ -43,17 +43,17 @@ var orm = {
     },
 
     insert: function(tableInput, inputName, inputBool, cb){
-        var queryString = "INSERT INTO" + tableInput;
+        var queryString = "INSERT INTO " + tableInput;
         queryString += "(";
         queryString += inputName.toString();
         queryString += ")";
         queryString += "VALUES (";
         queryString += printQuestionMarks(inputBool.length);
-    queryString += ") ";
+    queryString += ")";
 
 
 
-        connection.query(queryString, [tableInput, inputName, inputBool], function(err, result){
+        connection.query(queryString, inputBool, function(err, result){
             if (err) throw err;
             cb(result);
           });
