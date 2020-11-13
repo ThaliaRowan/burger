@@ -1,57 +1,74 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12 text-center" id="top-bar">
+    <div class="col-md-12" style="text-align: center;" id="top-bar">
       <img>
       <h1>
         EAT-DA-BURGER
       </h1>
-    </div>
-
-    <div class="col-md-6 text-center" class="task">
       <div class="row">
-        {{#each burger_data}}
-        {{#unless this.devoured}}
-        <div class="col-md-9 text-center">
-          <pre>
-      {{this.id}}. {{this.burger_name}}
-      </pre>
-        </div>
-        <div class="col-md-3 text-center">
-          <form class="devour_form button-size">
-            <input input type="hidden" class="burger_id" type="text" value="{{this.id}}"><br>
-            <button type="submit" class="btn btn-default">Devour It</button>
+        <div class="col-md-12">
+          <table class="table table-dark">
+            <thead>
+              <tr>
+                <th scope="col">To Eat</th>
+                <th scope="col">Devoured</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
 
-          </form>
+                  {{#each burgers}}
+                  {{#unless devoured}}
+                  {{> burgers/burger-block devour=true}}
+                  {{/unless}}
+                  {{/each}}
+                </td>
+                <td>{{#each burgers}}
+                  {{#if devoured}}
+                  {{> burgers/burger-block devour=false}}
+                  {{/if}}
+                  {{/each}}</td>
+
+              </tr>
+
+            </tbody>
+          </table>
+
+
+
+
+
+
         </div>
-        {{/unless}}
-        {{/each}}
 
       </div>
-    </div>
-    <div class="col-md-6 text-center" class="task">
-      {{#each burger_data}}
-      {{#if this.devoured}}
-      <input class="form-control" type="text" placeholder="{{this.id}}. {{this.burger_name}}" readonly>
-      {{/if}}
-      {{/each}}
-    </div>
+      
+
+
+<div class="row">
+  <div class="col-md-12">
+    
+    <form class="create-form">
+
+      <div class="form-group">
+        <label for="bu">Burger Name:</label>
+        <input type="text" id="bu" name="burger_name">
+        
+      <button type="submit">Add Cat</button>
+      </div>
+
+      <div class="form-group">
+        <input type="hidden" name="devoured" value="0"><br>
+        <input type="hidden" name="devoured" value="1">
+      </div>
+
+    </form>
   </div>
+
 </div>
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-12 text-center enter_section">
-      <form action="/api/burger" class="burger_control" method="POST">
-        <input input type="text" class="form-control" name="burger_name" value="" id="enter_text"><br>
-        <button type="submit" class="btn btn-primary" id="text-enter-button">Devour It</button>
-
-      </form>
-      <p>Enter burger by clicking submit</p>
     </div>
-  </div>
 
-</div>
 
 
 
