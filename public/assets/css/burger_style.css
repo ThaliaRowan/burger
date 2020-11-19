@@ -1,3 +1,5 @@
+
+
 #btn {
     color: black;
     background-color: #868686;
@@ -7,4 +9,16 @@
 
 td {
     margin: 5%;
+}
+
+body {
+    background-color: #000;
+    color: white;
+}
+
+#addBurg {
+    border-radius: 30rem;
+    border: solid black 2px;
+    background-color: #ffffff;
+    
 }
